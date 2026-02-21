@@ -42,7 +42,6 @@ This is a common pattern used in secret sharing apps — encoded secrets in link
 ---
 
 ## 📦 Getting Started
-```bash
 https://message-ameer.vercel.app/
 
 ### 📥 Clone the Repository
