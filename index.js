@@ -1,24 +1,34 @@
-const { hash } = window.location;
+const chatArea = document.querySelector('#chat-area');
+const hash = window.location.hash.replace('#','');
+const message = hash ? atob(hash) : '';
 
-const message = atob(hash.replace('#', ''));
-
+/* Show message from URL as received */
 if (message) {
-  document.querySelector('#message-form').classList.add('hide');
-  document.querySelector('#message-show').classList.remove('hide');
-
-  document.querySelector('h1').innerHTML = message;
+  const bubble = document.createElement('div');
+  bubble.className = 'message received';
+  bubble.textContent = message;
+  chatArea.appendChild(bubble);
 }
 
 document.querySelector('form').addEventListener('submit', event => {
   event.preventDefault();
 
-  document.querySelector('#message-form').classList.add('hide');
-  document.querySelector('#link-form').classList.remove('hide');
-
   const input = document.querySelector('#message-input');
+  if(!input.value.trim()) return;
+
   const encrypted = btoa(input.value);
 
+  // Show message in conversation as sent
+  const bubble = document.createElement('div');
+  bubble.className = 'message sent';
+  bubble.textContent = input.value;
+  chatArea.appendChild(bubble);
+
+  // Generate link for sharing
   const linkInput = document.querySelector('#link-input');
-  linkInput.value = `${window.location}#${encrypted}`;
+  document.querySelector('#link-form').classList.remove('hide');
+  linkInput.value = `${window.location.origin}${window.location.pathname}#${encrypted}`;
   linkInput.select();
+
+  input.value = '';
 });
