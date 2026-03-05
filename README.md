@@ -10,8 +10,7 @@
 ✅ Accept a secret message from the user  
 🔗 Generate a unique sharable link or token  
 🛡️ Optionally encode/encrypt the message  
-📩 Reveal the secret only when the link is accessed  
-📱 Simple frontend built with HTML, CSS & JavaScript  
+📩 Reveal the secret only when the link is accessed    
 🐍 Optional Python backend for message storage or encryption handling
 
 ---
